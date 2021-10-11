@@ -1,30 +1,17 @@
-import { Component } from "react";
-// import { toast } from "react-toastify";
+import React, { Component } from "react";
+import propTypes from "prop-types";
 
 import s from "./SearchBar.module.css";
 
 class SearchBar extends Component {
-  state = {
-    imageName: "",
-  };
-
-  handleNameChange = (event) => {
-    this.setState({ imageName: event.currentTarget.value.toLowerCase() });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (this.state.imageName.trim() === "") {
-      return alert("Пустое поле, найдите себе картинку! :) ");
-    }
-    this.props.onSubmit(this.state.imageName);
-    this.setState({ imageName: "" });
-  };
+  static propTypes = { onSubmit: propTypes.func };
   render() {
     return (
       <header className={s.Searchbar}>
-        <form className={s.SearchForm} onSubmit={this.handleSubmit}>
+        <form
+          className={s.SearchForm}
+          onSubmit={(event) => this.props.onSubmit(event)}
+        >
           <button type="submit" className={s.SearchFormButton}>
             <span className={s.SearchFormButtonLabel}>Search</span>
           </button>
@@ -32,11 +19,9 @@ class SearchBar extends Component {
           <input
             className={s.SearchFormInput}
             type="text"
-            autocomplete="off"
-            autofocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
-            value={this.state.imageName}
-            onChange={this.handleNameChange}
           />
         </form>
       </header>
