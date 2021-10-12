@@ -77,7 +77,7 @@ class App extends Component {
     event.target.reset();
   };
 
-  loadMoreFn = () => {
+  loadMoreFunction = () => {
     this.loaderToggle(true);
     this.getImages(this.state.searchImages, this.state.currentPage);
   };
@@ -100,7 +100,9 @@ class App extends Component {
           ></ImageGallery>
         )}
         {this.state.showLoader && <Loader />}
-        {this.state.searchImages !== "" && <Button fn={this.loadMoreFn} />}
+        {this.state.searchImages !== "" && (
+          <Button fn={this.loadMoreFunction} />
+        )}
       </div>
     );
   }

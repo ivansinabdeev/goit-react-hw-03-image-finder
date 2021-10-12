@@ -4,14 +4,14 @@ import propTypes from "prop-types";
 import s from "./Button.module.css";
 
 class Button extends Component {
-  static propTypes = { fn: propTypes.func };
+  static propTypes = { function: propTypes.func };
 
   render() {
     return (
       <button
         className={s.Button}
         type="button"
-        onClick={() => this.props.fn()}
+        onClick={() => this.props.function()}
       >
         Load more
       </button>
