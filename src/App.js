@@ -101,7 +101,7 @@ class App extends Component {
         )}
         {this.state.showLoader && <Loader />}
         {this.state.searchImages !== "" && (
-          <Button fn={this.loadMoreFunction} />
+          <Button onLoadMore={this.loadMoreFunction} />
         )}
       </div>
     );
